@@ -3,6 +3,7 @@ package com.example.sandboxv2.sandboxv2.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import com.example.sandboxv2.sandboxv2.services.CourseService;
 
 @RestController
 @RequestMapping("/api/courses")
+@CrossOrigin("http://localhost:5173")
 public class CourseController {
     @Autowired
     private CourseService courseService;
@@ -28,6 +30,11 @@ public class CourseController {
     @GetMapping("/{courseID}")
     public Course getCourseById(@PathVariable Long courseID) {
         return courseService.getCourseId(courseID);
+    }
+
+    @GetMapping("/byInstructor/{instructor_ID}")
+    public List<Course> getCourseByInstructorId(@PathVariable Long instructor_ID) {
+        return courseService.getCourseByInstructorId(instructor_ID);
     }
 
     @PostMapping

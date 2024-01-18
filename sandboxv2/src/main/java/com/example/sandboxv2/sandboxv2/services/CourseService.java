@@ -21,6 +21,10 @@ public class CourseService {
         return courseRepository.findById(courseID).orElse(null);
     }
 
+    public List<Course> getCourseByInstructorId(Long instructor_ID){
+        return courseRepository.findByInstructorId(instructor_ID);
+    }
+
     public Course savCourse(Course course) {
         return courseRepository.save(course);
     }

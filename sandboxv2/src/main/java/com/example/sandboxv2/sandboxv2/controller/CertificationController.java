@@ -27,7 +27,8 @@ import com.example.sandboxv2.sandboxv2.services.QuizTakenService;
 
 @RestController
 @RequestMapping("/api/certifications")
-@CrossOrigin("http://localhost:5174/")
+// @CrossOrigin("http://localhost:5174/")
+@CrossOrigin("http://localhost:5173/")
 public class CertificationController {
     @Autowired
     private CertificationService certificationService;
@@ -48,6 +49,11 @@ public class CertificationController {
     @GetMapping("/myCertification/{user_ID}")
     public List<Certification> getCertificationByUserId(@PathVariable Long user_ID) {
         return certificationService.getCertificationByUserId(user_ID);
+    }
+
+    @GetMapping("/verifyCertificate/{serialNo}")
+    public List<Certification> getCertificationsBySerialNo(@PathVariable String serialNo) {
+        return certificationService.getCertificationsBySerialNo(serialNo);
     }
 
     @PostMapping

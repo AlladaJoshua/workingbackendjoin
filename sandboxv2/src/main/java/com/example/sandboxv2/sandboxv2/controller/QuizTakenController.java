@@ -17,7 +17,8 @@ import com.example.sandboxv2.sandboxv2.services.QuizTakenService;
 
 @RestController
 @RequestMapping("/api/quizTkn")
-@CrossOrigin("http://localhost:5174/")
+// @CrossOrigin("http://localhost:5174/")
+@CrossOrigin("http://localhost:5173/")
 public class QuizTakenController {
     @Autowired
     private QuizTakenService quizTakenService;

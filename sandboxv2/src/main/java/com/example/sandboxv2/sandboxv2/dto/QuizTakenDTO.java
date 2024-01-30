@@ -37,6 +37,6 @@ public class QuizTakenDTO {
 
     public void setUser_ID(Long user_ID) {
         this.user_ID = user_ID;
-    }
+    }   
 
 }

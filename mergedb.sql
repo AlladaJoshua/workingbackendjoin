@@ -59,7 +59,7 @@ CREATE TABLE `certification` (
   PRIMARY KEY (`certificateid`),
   KEY `FKe4itqasqo0hufsvwv39gxjful` (`quiztkn_id`),
   CONSTRAINT `FKe4itqasqo0hufsvwv39gxjful` FOREIGN KEY (`quiztkn_id`) REFERENCES `quiz_taken` (`quiztknid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `certification` (
 
 LOCK TABLES `certification` WRITE;
 /*!40000 ALTER TABLE `certification` DISABLE KEYS */;
-INSERT INTO `certification` VALUES (1,'test.pdf','test','2024-01-25','Batch_55_000001',1),(3,'Joshua Allada-Java programming.pdf','test','2024-01-25','Batch_55-60552',1);
+INSERT INTO `certification` VALUES (2,'Joshua Allada-HTML and CSS.pdf','test','2024-01-25','Batch_55-943260',21),(3,'Joshua Allada-Java programming.pdf','test','2024-01-25','Batch_55-780917',22),(4,'Joshua Allada-C Languange.pdf','test','2024-01-25','Batch_55-692392',25),(5,'ichan-Java programming.pdf','test','2024-01-25','Batch_55-74368',26),(6,'ichan-C Languange.pdf','test','2024-01-25','Batch_55-537473',27);
 /*!40000 ALTER TABLE `certification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +92,7 @@ CREATE TABLE `course` (
   PRIMARY KEY (`courseid`),
   KEY `FKqk2yq2yk124dhlsilomy36qr9` (`instructor_id`),
   CONSTRAINT `FKqk2yq2yk124dhlsilomy36qr9` FOREIGN KEY (`instructor_id`) REFERENCES `instructor` (`instructorid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +101,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (1,'test','Java basics 101.','2024-02-20','java.pdf','java.png','2024-01-20','Java programming',1);
+INSERT INTO `course` VALUES (1,'test','Java basics 101.','2024-02-20','java.pdf','java.png','2024-01-20','Java programming',1),(2,'test','Html and Css basics 101.','2024-02-20','htmlandcss.pdf','htmlandcss.png','2024-01-20','HTML and CSS',1),(3,'test','C Languange basics 101.','2024-02-20','C_Languange.pdf','C_Languange.png','2024-01-20','C Languange',1);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,7 +127,7 @@ CREATE TABLE `enrollment` (
   CONSTRAINT `FK4x08no2mpupkr616h50w3aksx` FOREIGN KEY (`user_id`) REFERENCES `users` (`userid`),
   CONSTRAINT `FKbhhcqkw1px6yljqg92m0sh2gt` FOREIGN KEY (`course_id`) REFERENCES `course` (`courseid`),
   CONSTRAINT `FKmy1hnpppxotxu770v1lktqc5d` FOREIGN KEY (`support_id`) REFERENCES `support` (`supportid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -136,7 +136,7 @@ CREATE TABLE `enrollment` (
 
 LOCK TABLES `enrollment` WRITE;
 /*!40000 ALTER TABLE `enrollment` DISABLE KEYS */;
-INSERT INTO `enrollment` VALUES (2,'','','2024-01-18',1,1,1);
+INSERT INTO `enrollment` VALUES (2,'','','2024-01-18',1,1,1),(3,'','','2024-01-18',2,1,1),(4,'','','2024-01-18',3,1,1);
 /*!40000 ALTER TABLE `enrollment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,7 +189,7 @@ CREATE TABLE `quiz` (
   PRIMARY KEY (`quizid`),
   KEY `FKce16mrsgeokucc022mpyev7xk` (`course_id`),
   CONSTRAINT `FKce16mrsgeokucc022mpyev7xk` FOREIGN KEY (`course_id`) REFERENCES `course` (`courseid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,7 +198,7 @@ CREATE TABLE `quiz` (
 
 LOCK TABLES `quiz` WRITE;
 /*!40000 ALTER TABLE `quiz` DISABLE KEYS */;
-INSERT INTO `quiz` VALUES (1,'Html and Css quiz','2024-02-20','Link','image file name','2024-01-20',80,'Quiz 1',1);
+INSERT INTO `quiz` VALUES (2,'Html and Css quiz','2024-02-20','Link','image file name','2024-01-20',80,'Quiz 1',2),(3,'Java Basics 101','2024-02-20','Link','image file name','2024-01-20',80,'Quiz 1',1),(4,'C Language','2024-02-20','Link','image file name','2024-01-20',80,'Quiz 1',3);
 /*!40000 ALTER TABLE `quiz` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,7 +219,7 @@ CREATE TABLE `quiz_taken` (
   KEY `FKdg7v46xi5m864xyucto8isr74` (`user_id`),
   CONSTRAINT `FK7ak367u7s0qa2qgsrcm2c7je0` FOREIGN KEY (`quiz_id`) REFERENCES `quiz` (`quizid`),
   CONSTRAINT `FKdg7v46xi5m864xyucto8isr74` FOREIGN KEY (`user_id`) REFERENCES `users` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,7 +228,7 @@ CREATE TABLE `quiz_taken` (
 
 LOCK TABLES `quiz_taken` WRITE;
 /*!40000 ALTER TABLE `quiz_taken` DISABLE KEYS */;
-INSERT INTO `quiz_taken` VALUES (1,83,1,1),(2,83,1,NULL),(3,83,1,1);
+INSERT INTO `quiz_taken` VALUES (21,83,2,1),(22,80,3,1),(25,80,4,1),(26,80,3,2),(27,80,4,2);
 /*!40000 ALTER TABLE `quiz_taken` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -275,7 +275,7 @@ CREATE TABLE `users` (
   `profile` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,7 +284,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'jallada@tspi.com.ph','Joshua Allada','TestTest','link','jallada');
+INSERT INTO `users` VALUES (1,'jallada@tspi.com.ph','Joshua Allada','TestTest','link','jallada'),(2,'ichan@tspi.com.ph','ichan','tgsivsbu','ichanPic.png','ichan'),(3,'carlo@tspi.com.ph','Carlo','tgsivsbu','carloPic.png','Carlo');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -297,4 +297,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-26 14:53:46
+-- Dump completed on 2024-01-30 14:11:42

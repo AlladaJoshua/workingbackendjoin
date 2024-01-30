@@ -16,4 +16,7 @@ public interface CertificationRepository extends JpaRepository<Certification, Lo
 
     @Query("SELECT cr FROM Certification cr WHERE cr.quizTaken.users.userID = :user_ID")
     List<Certification> findByUserId(@Param("user_ID")Long user_ID);
+
+    @Query("SELECT c FROM Certification c WHERE c.serial_no = :serialNo")
+    List<Certification> findBySerialNo(String serialNo);
 }
